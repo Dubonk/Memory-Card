@@ -49,17 +49,38 @@ img {
   width: 80%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#reset {
+  background-color: rgb(228, 88, 88);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+
+@media (max-width: 768px) {
+  .header {
+    margin-bottom: 10px;
+  }
+  .title {
+    font-size: 26px;
+  }
+
+  .rules {
+    font-size: 16px;
+  }
+  .cardsContainer {
+    gap: 15px;
+  }
+
+  .pokemonCard {
+    padding: 30px 10px 30px 10px;
+  }
+
+  .gameRules {
+    width: 50%;
+  }
+
+  .scores {
+    padding-right: 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
   }
 }
