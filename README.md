@@ -10,3 +10,4 @@ Assignment
 4. Now that you’ve thought about the structure of your application, set up the folder structure and start creating the components.
 
 5. Style your application so you can show it off!
+Check out a live preview here https://dubonkmemorygame.netlify.app/
