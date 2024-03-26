@@ -29,7 +29,6 @@ function Cards({score, setScore, highScore, setHighScore}) {
         let mixedPokemon = [...pokemon];
         while (currentIndex > 0) {
             randomIndex = Math.floor(Math.random() * (currentIndex + 1)); // +1 to include the currentIndex
-            console.log(mixedPokemon[currentIndex], randomIndex)
             currentIndex--;
             [mixedPokemon[currentIndex], mixedPokemon[randomIndex]] = [
                 mixedPokemon[randomIndex], mixedPokemon[currentIndex]
@@ -38,23 +37,6 @@ function Cards({score, setScore, highScore, setHighScore}) {
         return setPokemon(mixedPokemon);
     }
     
-
-    // function shuffleCards() {
-    //     //code will scramble the card divs in a random order.
-    //     let currentIndex = pokemon.length; 
-    //     let randomIndex;
-    //     let mixedPokemon = [...pokemon];
-    //     while (currentIndex > 0) {
-    //         randomIndex = Math.floor(Math.random() * currentIndex);
-    //         console.log(mixedPokemon[currentIndex])
-    //         currentIndex--
-    //         [mixedPokemon[currentIndex], mixedPokemon[randomIndex]] = [
-    //             mixedPokemon[randomIndex], mixedPokemon[currentIndex]
-    //         ]
-    //     }
-    //     return setPokemon(mixedPokemon)
-    // }
-
     function updateScores(name) {
         if(clickedPokemon.includes(name)) {
             if(score > highScore) {
