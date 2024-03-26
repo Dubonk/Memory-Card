@@ -1,7 +1,12 @@
-function Header({ score, highScore, setHighScore, setOffset }) {
+function Header({ score, highScore, setHighScore, setOffset, setClickedPokemon, setScore }) {
     function handleRandom() {
-        let randomNum = Math.floor(Math.random() * 139)
+        let randomNum = Math.floor(Math.random() * 481)
         setOffset(randomNum);
+        setClickedPokemon([]);
+        if(score > highScore) {
+            setHighScore(score);
+        }
+        setScore(0);
     }
 
     return (

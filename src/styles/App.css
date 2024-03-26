@@ -65,6 +65,12 @@ img {
   margin-top: 2px;
 }
 
+#loading {
+  margin-top: 30%;
+  align-self: center;
+  width: 350px;
+}
+
 
 @media (max-width: 768px) {
   #root {
@@ -112,6 +118,10 @@ img {
   }
   #reset {
     margin-top: 8px;
+  }
+
+  #loading {
+    max-width: 60%;
   }
 
 }

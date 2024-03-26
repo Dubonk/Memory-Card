@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import loadingGif from '../gifs/5Q0v.gif';
 
 
-function Cards({score, setScore, highScore, setHighScore, offset}) {
+function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon, setClickedPokemon}) {
     const [pokemon, setPokemon] = useState([]);
-    const [clickedPokemon, setClickedPokemon] = useState([]);
-    
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchPokemon();
@@ -12,6 +12,7 @@ function Cards({score, setScore, highScore, setHighScore, offset}) {
 
     const fetchPokemon = async () => {
         try {
+            setLoading(true);
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${offset}`);
             const data = await response.json();
             const pokemonResults = data.results;
@@ -22,6 +23,10 @@ function Cards({score, setScore, highScore, setHighScore, offset}) {
             setPokemon(pokemonDetails);
         } catch (error) {
             console.log(error);
+        } finally {
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000);
         }
     }
 
@@ -62,22 +67,34 @@ function Cards({score, setScore, highScore, setHighScore, offset}) {
         }
     }
 
+    const playPokemonCry = (index) => {
+        const audio = new Audio(pokemon[index].cries.latest);
+        audio.volume = 0.1;
+        audio.play();
+    }
+
     const handleClick = (index, name) => {
-        shuffleCards();
-        updateScores(name);
+        playPokemonCry(index)
+        setTimeout(() => {
+            updateScores(name);
+            shuffleCards();
+        }, 1000)
     }
 
     return (
         <>
             <div className="cardsContainer">
-                {pokemon.map((poke, index) => (
-                    <div className="pokemonCard" key={poke.name}>
-                        <img onClick={() => handleClick(index, poke.name)} src={poke.sprites.other.dream_world.front_default} alt={poke.name} />
-                    </div>
-                ))}
+                {loading ? <img id="loading" src={loadingGif} alt="loading..." /> : 
+                    pokemon.map((poke, index) => (
+                        <div className="pokemonCard" key={poke.name}>
+                            <img onClick={() => handleClick(index, poke.name)} src={poke.sprites.other.dream_world.front_default} alt={poke.name} />
+                        </div>
+                    ))
+                }
+
             </div>
         </>
     )
 }
-//
+
 export { Cards };
