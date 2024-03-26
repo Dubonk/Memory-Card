@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 
-function Cards({score, setScore, highScore, setHighScore}) {
+
+function Cards({score, setScore, highScore, setHighScore, offset}) {
     const [pokemon, setPokemon] = useState([]);
     const [clickedPokemon, setClickedPokemon] = useState([]);
+    
 
     useEffect(() => {
         fetchPokemon();
-    }, []);
+    }, [offset]);
 
     const fetchPokemon = async () => {
         try {
-            const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=12&offset=0');
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${offset}`);
             const data = await response.json();
             const pokemonResults = data.results;
             const pokemonDetails = await Promise.all(pokemonResults.map(async (poke) => {
@@ -50,9 +52,10 @@ function Cards({score, setScore, highScore, setHighScore}) {
             const newClickedPokemon = [...clickedPokemon, name];
             setClickedPokemon(newClickedPokemon);
         if(score == 11) {
-            alert("perfect score!")
+            alert("Perfect Score!")
             setHighScore(12)
             setScore(0)
+            setClickedPokemon([]); 
         } else {
         setScore(score + 1)
             }

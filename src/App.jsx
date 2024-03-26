@@ -4,6 +4,7 @@ import './styles/App.css'
 import { useEffect, useState } from 'react';
 
 function App() {
+  const [offset, setOffset] = useState(0);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(() => {
     const localHighScore = localStorage.getItem("HighScore")
@@ -18,8 +19,8 @@ function App() {
 
   return (
     <>
-    <Header score={score} highScore={highScore} setHighScore={setHighScore} />
-    <Cards score={score} setScore={setScore} highScore={highScore} setHighScore={setHighScore} />
+    <Header score={score} highScore={highScore} setHighScore={setHighScore} setOffset={setOffset} offset={offset} />
+    <Cards score={score} setScore={setScore} highScore={highScore} setHighScore={setHighScore} offset={offset} />
     </>
   )
 }

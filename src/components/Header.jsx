@@ -1,4 +1,9 @@
-function Header({ score, highScore, setHighScore }) {
+function Header({ score, highScore, setHighScore, setOffset }) {
+    function handleRandom() {
+        let randomNum = Math.floor(Math.random() * 139)
+        setOffset(randomNum);
+    }
+
     return (
         <div className="header">
             <div className="gameRules">
@@ -9,6 +14,7 @@ function Header({ score, highScore, setHighScore }) {
             <h4>Score: {score}</h4>
             <h4>Best: {highScore}</h4>
             <button id="reset" onClick={() => setHighScore(0)}>Reset</button>
+            <button id="randomize" onClick={() => handleRandom()}>Randomize</button>
         </div>
         </div>
     )

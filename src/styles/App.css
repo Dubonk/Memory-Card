@@ -1,14 +1,17 @@
 body {
   background-color: rgb(140, 140, 212);
   display: flex;
-  justify-content: center;
   width: 100%;
+  color: black;
+  margin: 0;
+  min-width: 320px;
 }
 
 #root {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .header {
@@ -38,39 +41,60 @@ body {
   align-items: center;
   padding: 50px 10px 50px 10px;
   background-color: #61dafbaa;
+  max-height: 33%;
 }
 
 .pokemonCard:hover {
   transform: scale(1.02);
-  cursor: pointer;
 }
 
 img {
-  width: 80%;
+  width: 150px;
+  max-width: 80%;
+  background-size: 100%;
+  cursor: pointer;
 }
 
 #reset {
   background-color: rgb(228, 88, 88);
+  color: black;
+}
+#randomize {
+  color: black;
+  background-color: white;
+  margin-top: 2px;
 }
 
 
 @media (max-width: 768px) {
+  #root {
+    justify-content: start;
+  }
   .header {
     margin-bottom: 10px;
+    margin-top: 10px;
   }
   .title {
     font-size: 26px;
+    margin: 0;
   }
 
   .rules {
     font-size: 16px;
+    margin: 0;
   }
   .cardsContainer {
-    gap: 15px;
+    gap: 8px;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
 
   .pokemonCard {
-    padding: 30px 10px 30px 10px;
+    padding: 30px 10px 10px 10px;
+  }
+
+  img {
+    max-width: 50px;
   }
 
   .gameRules {
@@ -83,4 +107,11 @@ img {
     display: flex;
     flex-direction: column;
   }
+  .scores > h4 {
+    margin: 0;
+  }
+  #reset {
+    margin-top: 8px;
+  }
+
 }
