@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import loadingGif from '../gifs/5Q0v.gif';
 
-
 function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon, setClickedPokemon}) {
     const [pokemon, setPokemon] = useState([]);
     const [loading, setLoading] = useState(true);
