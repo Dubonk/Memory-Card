@@ -2,6 +2,7 @@ body {
   background-color: rgb(140, 140, 212);
   display: flex;
   width: 100%;
+  height: 100vh;
   color: black;
   margin: 0;
   min-width: 320px;
@@ -9,19 +10,31 @@ body {
 
 #root {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  /* justify-content: space-between; */
+  background-image: url('../gifs/7951512.jpg');
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .header {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.gameRules {
+  margin-left: 20px;
+  color: white;
 }
 
 .scores {
-  padding-right: 100px;
+  color: white;
+  margin-right: 20px;
 }
 
 .cardsContainer {
@@ -35,12 +48,12 @@ body {
 
 .pokemonCard {
   width: 20%;
-  outline: 1px solid yellow;
+  outline: 2px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 50px 10px 50px 10px;
-  background-color: #61dafbaa;
+  background-color: #f4c244;
   max-height: 33%;
 }
 
@@ -50,7 +63,7 @@ body {
 
 img {
   width: 200px;
-  max-width: 80%;
+  max-width: 60%;
   cursor: pointer;
 }
 
@@ -65,15 +78,15 @@ img {
 }
 
 #loading {
-  margin-top: 30%;
-  align-self: center;
+  position: absolute;
+  top: 40%;
   width: 350px;
 }
 
 @media screen and (min-width: 1500px) and (max-width: 1540px) {
 
   img {
-    width: 150px;
+    width: 80px;
   }
   .pokemonCard {
     width: 240px;
@@ -85,12 +98,14 @@ img {
 }
 
 @media (max-width: 768px) {
+  body {
+    height: 86vh;
+  }
   #root {
-    justify-content: start;
+    align-self: center;
   }
   .header {
     margin-bottom: 10px;
-    margin-top: 10px;
   }
   .title {
     font-size: 26px;
