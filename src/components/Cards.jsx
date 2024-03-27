@@ -86,7 +86,7 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
                 {loading ? <img id="loading" src={loadingGif} alt="loading..." /> : 
                     pokemon.map((poke, index) => (
                         <div className="pokemonCard" key={poke.name}>
-                            <img onClick={() => handleClick(index, poke.name)} src={poke.sprites.other.dream_world.front_default} alt={poke.name} />
+                            <img onClick={() => handleClick(index, poke.name)} src={poke.sprites.front_default} alt={poke.name} />
                         </div>
                     ))
                 }

@@ -49,9 +49,8 @@ body {
 }
 
 img {
-  width: 150px;
+  width: 200px;
   max-width: 80%;
-  background-size: 100%;
   cursor: pointer;
 }
 
@@ -71,6 +70,19 @@ img {
   width: 350px;
 }
 
+@media screen and (min-width: 1500px) and (max-width: 1540px) {
+
+  img {
+    width: 150px;
+  }
+  .pokemonCard {
+    width: 240px;
+    height: 100px;
+    padding: 30px 5px 30px 5px;
+  }
+
+
+}
 
 @media (max-width: 768px) {
   #root {
