@@ -98,9 +98,6 @@ img {
 }
 
 @media (max-width: 768px) {
-  body {
-    height: 86vh;
-  }
   #root {
     align-self: center;
   }
