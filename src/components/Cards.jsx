@@ -1,40 +1,52 @@
 import { useEffect, useState } from "react";
 import loadingGif from '../gifs/5Q0v.gif';
+import PropTypes from 'prop-types';
+
 
 function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon, setClickedPokemon}) {
     const [pokemon, setPokemon] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    Cards.propTypes = {
+        setScore: PropTypes.func,
+        setClickedPokemon: PropTypes.func,
+        score: PropTypes.number,
+        highScore: PropTypes.number,
+        setHighScore: PropTypes.func,
+        setOffset: PropTypes.func,
+        offset: PropTypes.number,
+        clickedPokemon: PropTypes.array
+      };
+
     useEffect(() => {
+        const fetchPokemon = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${offset}`);
+                const data = await response.json();
+                const pokemonResults = data.results;
+                const pokemonDetails = await Promise.all(pokemonResults.map(async (poke) => {
+                    const response = await fetch(poke.url);
+                    return response.json();
+                }));
+                setPokemon(pokemonDetails);
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setTimeout(() => {
+                    setLoading(false);
+                }, 1000);
+            }
+        }
         fetchPokemon();
     }, [offset]);
 
-    const fetchPokemon = async () => {
-        try {
-            setLoading(true);
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${offset}`);
-            const data = await response.json();
-            const pokemonResults = data.results;
-            const pokemonDetails = await Promise.all(pokemonResults.map(async (poke) => {
-                const response = await fetch(poke.url);
-                return response.json();
-            }));
-            setPokemon(pokemonDetails);
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setTimeout(() => {
-                setLoading(false);
-            }, 1000);
-        }
-    }
-
     function shuffleCards() {
-        let currentIndex = pokemon.length - 1; // Initialize currentIndex to the last valid index
+        let currentIndex = pokemon.length - 1;
         let randomIndex;
         let mixedPokemon = [...pokemon];
         while (currentIndex > 0) {
-            randomIndex = Math.floor(Math.random() * (currentIndex + 1)); // +1 to include the currentIndex
+            randomIndex = Math.floor(Math.random() * (currentIndex + 1));
             currentIndex--;
             [mixedPokemon[currentIndex], mixedPokemon[randomIndex]] = [
                 mixedPokemon[randomIndex], mixedPokemon[currentIndex]

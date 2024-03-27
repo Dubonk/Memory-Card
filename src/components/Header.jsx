@@ -1,4 +1,18 @@
+import PropTypes from 'prop-types'
+
 function Header({ score, highScore, setHighScore, setOffset, setClickedPokemon, setScore }) {
+
+    Header.propTypes = {
+        setScore: PropTypes.func,
+        setClickedPokemon: PropTypes.func,
+        score: PropTypes.number,
+        highScore: PropTypes.number,
+        setHighScore: PropTypes.func,
+        setOffset: PropTypes.func,
+        offset: PropTypes.number,
+      };
+
+
     function handleRandom() {
         let randomNum = Math.floor(Math.random() * 481)
         setOffset(randomNum);
