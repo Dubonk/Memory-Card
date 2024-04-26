@@ -39,32 +39,40 @@ body {
 
 .cardsContainer {
   align-self: center;
-  max-width: 1280px;
+  max-width: 1000px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 20px;
   position: absolute;
   top: 17%;
 }
 
 .pokemonCard {
-  width: 250px;
-  height: 200px;
-  outline: 2px solid red;
+  width: 20%;
+  max-width: 196px;
+  height: 199px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 50px 10px 50px 10px;
   background-color: #f4c244;
+  outline: 2px solid red;
   max-height: 33%;
+  border-radius: 12px;
 }
 
 .clicked {
-  transition: background-color .5s linear;
-  background-color: black;
+  background-image: url('../assets/pokemon_card_backside.png');
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: none;
+  background-color: transparent;
+  transition: background-image 5s linear;
+  /*background-color: black;
   outline: black;
-  pointer-events: none;
+  pointer-events: none; */
 }
 .clicked > img {
   visibility: hidden;
@@ -117,20 +125,6 @@ img {
   margin-top: 45%;
 }
 
-@media screen and (min-width: 1500px) and (max-width: 1540px) {
-
-  /* img {
-    width: 80px;
-  }
-  .pokemonCard {
-    width: 240px;
-    height: 100px;
-    padding: 30px 5px 30px 5px;
-  } */
-
-
-}
-
 @media (max-width: 768px) {
   #root {
     align-self: center;
@@ -152,11 +146,12 @@ img {
     margin-bottom: 10px;
     margin-top: 10px;
     top: 20%;
+    gap: 20px;
   }
 
   .pokemonCard {
     width: 20%;
-    height: 100px;
+    height: 96px;
     padding: 30px 10px 10px 10px;
   }
 
