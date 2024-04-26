@@ -60,6 +60,7 @@ body {
   outline: 2px solid red;
   max-height: 33%;
   border-radius: 12px;
+  perspective: 1000px;
 }
 
 .clicked {
@@ -69,10 +70,6 @@ body {
   background-position: center;
   outline: none;
   background-color: transparent;
-  transition: background-image 5s linear;
-  /*background-color: black;
-  outline: black;
-  pointer-events: none; */
 }
 .clicked > img {
   visibility: hidden;
@@ -88,7 +85,6 @@ body {
 }
 
 img {
-  width: 40%;
   max-width: 60%;
   cursor: pointer;
 }
