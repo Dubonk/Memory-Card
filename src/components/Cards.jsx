@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon, setClickedPokemon}) {
     const [pokemon, setPokemon] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isClicked, setClicked] = useState(false);
 
     Cards.propTypes = {
         setScore: PropTypes.func,
@@ -86,9 +87,11 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
 
     const handleClick = (index, name) => {
         playPokemonCry(index)
+        setClicked(true);
         setTimeout(() => {
             updateScores(name);
             shuffleCards();
+            setClicked(false);
         }, 1000)
     }
 
@@ -97,7 +100,7 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
             <div className="cardsContainer">
                 {loading ? <img id="loading" src={loadingGif} alt="loading..." /> : 
                     pokemon.map((poke, index) => (
-                        <div className="pokemonCard" key={poke.name}>
+                        <div className={`pokemonCard ${isClicked ? 'clicked' : ''}`} key={poke.name}>
                             <img onClick={() => handleClick(index, poke.name)} src={poke.sprites.other.dream_world.front_default} alt={poke.name} />
                         </div>
                     ))
