@@ -44,6 +44,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+  position: absolute;
+  top: 20%;
 }
 
 .pokemonCard {
@@ -59,6 +61,7 @@ body {
 
 .pokemonCard:hover {
   transform: scale(1.02);
+  background-color: #cea439;
 }
 
 img {
@@ -68,13 +71,30 @@ img {
 }
 
 #reset {
-  background-color: rgb(228, 88, 88);
+  background-color: rgb(241, 81, 81);
   color: black;
+}
+
+#reset:hover {
+  background-color: rgb(177, 68, 68);
 }
 #randomize {
   color: black;
   background-color: white;
   margin-top: 2px;
+}
+
+#randomize:hover {
+  background-color: rgb(189, 189, 189);
+}
+
+#reset:active, #randomize:active {
+  transform: scale(0.95);
+}
+
+#reset:hover, #randomize:hover {
+  outline: none;
+  border-color: transparent;
 }
 
 #loading {
@@ -85,14 +105,14 @@ img {
 
 @media screen and (min-width: 1500px) and (max-width: 1540px) {
 
-  img {
+  /* img {
     width: 80px;
   }
   .pokemonCard {
     width: 240px;
     height: 100px;
     padding: 30px 5px 30px 5px;
-  }
+  } */
 
 
 }
@@ -102,6 +122,7 @@ img {
     align-self: center;
   }
   .header {
+    padding-bottom: 5px;
     margin-bottom: 10px;
   }
   .title {
@@ -117,6 +138,7 @@ img {
     gap: 8px;
     margin-bottom: 10px;
     margin-top: 10px;
+    top: 27%;
   }
 
   .pokemonCard {
