@@ -57,36 +57,49 @@ body {
   align-items: center;
   padding: 50px 10px 50px 10px;
   background-color: #f4c244;
-  outline: 2px solid red;
   max-height: 33%;
   border-radius: 12px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  position: relative;
   perspective: 1000px;
-}
-
-.clicked {
-  background-image: url('../assets/pokemon_card_backside.png');
-  background-size: contain; 
-  background-repeat: no-repeat;
+  background-image: url('../assets/foreground.jpg');
   background-position: center;
-  outline: none;
-  background-color: transparent;
-}
-.clicked > img {
-  visibility: hidden;
+  background-size: cover;
 }
 
-.clicked:hover {
-  background-color: none;
+.flip {
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
 }
 
-.pokemonCard:hover {
-  transform: scale(1.02);
-  /* background-color: #cea439; */
+.front {
+  display: flex;
+  justify-content: center;
+  backface-visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20%;
+  height: 100%;
+}
+
+.back {
+  background-image: url('../assets/pokemon_card_backside.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: rotateY(180deg);
+  position: absolute;
+  backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 img {
   max-width: 60%;
   cursor: pointer;
+  border-radius: 12px;
 }
 
 #reset {
@@ -140,15 +153,21 @@ img {
   }
   .cardsContainer {
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
     top: 20%;
-    gap: 20px;
+    gap: 10px;
   }
 
   .pokemonCard {
     width: 20%;
     height: 96px;
     padding: 30px 10px 10px 10px;
+  }
+
+  .back {
+    background-position: center;
+    background-size: cover;
+    top: 0;
   }
 
   img {

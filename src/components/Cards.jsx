@@ -89,10 +89,12 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
         playPokemonCry(index)
         setClicked(true);
         setTimeout(() => {
-            updateScores(name);
             shuffleCards();
+        }, 500);
+        setTimeout(() => {
+            updateScores(name);
             setClicked(false);
-        }, 1000)
+        }, 1000);    
     }
 
     return (
@@ -100,8 +102,11 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
             <div className="cardsContainer">
                 {loading ? <img id="loading" src={loadingGif} alt="loading..." /> : 
                     pokemon.map((poke, index) => (
-                        <div className={`pokemonCard ${isClicked ? 'clicked' : ''}`} key={poke.name}>
-                            <img onClick={() => handleClick(index, poke.name)} src={poke.sprites.other.dream_world.front_default} alt={poke.name} />
+                        <div key={poke.name} className={`pokemonCard ${isClicked ? 'flip' : ''}`}>
+                            <div className={`front`}>
+                                <img onClick={() => handleClick(index, poke.name)} src={poke.sprites.other.dream_world.front_default} alt={poke.name} />
+                                </div>
+                            <div className="back"></div>
                         </div>
                     ))
                 }
@@ -110,5 +115,4 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
         </>
     )
 }
-
 export { Cards };
