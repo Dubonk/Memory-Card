@@ -1,5 +1,6 @@
 import { Header } from './components/Header'
 import { Cards } from './components/Cards'
+import { RandomFacts } from './components/RandomFacts';
 import './styles/App.css'
 import { useEffect, useState } from 'react';
 
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
     <Header setScore={setScore} setClickedPokemon={setClickedPokemon} score={score} highScore={highScore} setHighScore={setHighScore} setOffset={setOffset} offset={offset} />
+    <RandomFacts/>
     <Cards clickedPokemon={clickedPokemon} setClickedPokemon={setClickedPokemon} score={score} setScore={setScore} highScore={highScore} setHighScore={setHighScore} offset={offset} />
     </>
   )

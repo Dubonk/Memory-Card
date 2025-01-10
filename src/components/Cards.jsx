@@ -8,6 +8,8 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
     const [loading, setLoading] = useState(true);
     const [isClicked, setClicked] = useState(false);
 
+
+
     Cards.propTypes = {
         setScore: PropTypes.func,
         setClickedPokemon: PropTypes.func,
