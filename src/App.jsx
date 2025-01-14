@@ -22,7 +22,7 @@ function App() {
   return (
     <>
     <Header setScore={setScore} setClickedPokemon={setClickedPokemon} score={score} highScore={highScore} setHighScore={setHighScore} setOffset={setOffset} offset={offset} />
-    <RandomFacts/>
+    {/* <RandomFacts/> */}
     <Cards clickedPokemon={clickedPokemon} setClickedPokemon={setClickedPokemon} score={score} setScore={setScore} highScore={highScore} setHighScore={setHighScore} offset={offset} />
     </>
   )

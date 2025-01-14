@@ -7,7 +7,7 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
     const [pokemon, setPokemon] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isClicked, setClicked] = useState(false);
-
+    const [gameStart, setGameStart] = useState(false);
 
 
     Cards.propTypes = {
@@ -87,6 +87,10 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
         audio.play();
     }
 
+    const startGame = () => {
+        setGameStart(true);
+    }
+ 
     const handleClick = (index, name) => {
         playPokemonCry(index)
         setClicked(true);
@@ -101,8 +105,10 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
 
     return (
         <>
+        {!gameStart ? <button className="playBtn" onClick={() => startGame()}>Play</button> :  
             <div className="cardsContainer">
-                {loading ? <img id="loading" src={loadingGif} alt="loading..." /> : 
+                
+                    {loading ? <img id="loading" src={loadingGif} alt="loading..." /> : 
                     pokemon.map((poke, index) => (
                         <div key={poke.name} className={`pokemonCard ${isClicked ? 'flip' : ''}`}>
                             <div className={`front`}>
@@ -112,8 +118,8 @@ function Cards({score, setScore, highScore, setHighScore, offset, clickedPokemon
                         </div>
                     ))
                 }
-
             </div>
+            }
         </>
     )
 }

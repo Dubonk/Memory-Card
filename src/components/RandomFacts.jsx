@@ -32,7 +32,7 @@ function RandomFacts() {
 
         return (
             <div className="pokemonFacts">
-                <h3>Pokemon Facts!</h3>
+                <h3>Did You Know!</h3>
                 <h4>{pokemonName}:</h4>
                 <p>{pokeFact}</p>
                 <button id="factButton" onClick={() => getFact()}>Get a Fact!</button>

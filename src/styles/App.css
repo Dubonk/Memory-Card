@@ -35,11 +35,29 @@ body {
   color: white;
   margin-right: 20px;
 }
+
+.playBtn {
+  justify-self: center;
+  align-self: center;
+  background-color: white;
+  width: 250px;
+  height: 100px;
+  font-size: 32px;
+  position: absolute;
+  top: 40%;
+}
 .pokemonFacts {
   width: 50%;
   align-self: center;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
+  border-radius: 12px;
+  padding: 5px;
+}
+
+#factButton {
+  background-color: white;
+  border: none;
 }
 
 .cardsContainer {
@@ -121,15 +139,15 @@ img {
   margin-top: 2px;
 }
 
-#randomize:hover {
+#randomize:hover, .playBtn:hover {
   background-color: rgb(189, 189, 189);
 }
 
-#reset:active, #randomize:active {
+#reset:active, #randomize:active, .playBtn:active {
   transform: scale(0.95);
 }
 
-#reset:hover, #randomize:hover {
+#reset:hover, #randomize:hover, .playBtn:hover {
   outline: none;
   border-color: transparent;
 }
@@ -141,7 +159,7 @@ img {
 
 @media (max-width: 768px) {
   body {
-    height: fit-content;
+    background-size: cover;
   }
   #root {
     /* padding-top: 25px; */
